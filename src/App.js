@@ -1,5 +1,6 @@
 import React from 'react'
 import Loading from './components/Loading'
+import SingleTodo from './components/SingleTodo'
 import Todos from './components/Todos'
 
 class App extends React.Component {
@@ -56,9 +57,14 @@ class App extends React.Component {
   render() {
 
     const setSingleTodo = (e) => {
+      
       fetch(`https://jsonplaceholder.typicode.com/todos/${e.target.id}`)
       .then((response) => response.json())
       .then((data) => this.setState({singleTodo: data}))
+    }
+
+    const clearSingleTodo = (e) => {
+      this.setState({singleTodo: null})
     }
 
     if(this.state.loading) {
@@ -68,7 +74,9 @@ class App extends React.Component {
     }
     
     return (
-      <Todos todos={this.state.todos} setSingleTodo={setSingleTodo} />
+      !this.state.singleTodo ? <Todos todos={this.state.todos} setSingleTodo={setSingleTodo} />
+      : 
+      <SingleTodo singleTodo={this.state.singleTodo} clearSingleTodo={clearSingleTodo}/>
     )
   }
 }

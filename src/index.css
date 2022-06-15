@@ -13,3 +13,12 @@
 .todoItem:hover {
   cursor: pointer;
 }
+
+.singleTodo {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 600px;
+  margin: auto;
+  border: 5px solid red;
+  padding: 1rem;
+  margin-top: 3rem;
+}
