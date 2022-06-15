@@ -3,6 +3,7 @@ import Loading from './components/Loading'
 import SingleTodo from './components/SingleTodo'
 import Todos from './components/Todos'
 
+
 class App extends React.Component {
 
   // state you should have
@@ -57,15 +58,15 @@ class App extends React.Component {
   render() {
 
     const setSingleTodo = (e) => {
-      
       fetch(`https://jsonplaceholder.typicode.com/todos/${e.target.id}`)
       .then((response) => response.json())
       .then((data) => this.setState({singleTodo: data}))
     }
 
-    const clearSingleTodo = (e) => {
+    const clearSingleTodo = () => {
       this.setState({singleTodo: null})
     }
+
 
     if(this.state.loading) {
       return (
